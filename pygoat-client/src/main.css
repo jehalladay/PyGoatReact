@@ -1,0 +1,49 @@
+/* 
+Main Style Sheet for the PyGoat Client
+*/
+
+
+/* Color Pallet */
+
+.themeColor1 { background-color: #860037; }
+
+.themeColor2 { background-color: #333333; }
+
+.themeColor3 { background-color: #ffd200; }
+
+.themeColor4 { background-color: #eeeeee; }
+
+.themeColor5 { background-color: #c4c4c4; }
+
+/* Fonts */
+
+body, h1, h2 {
+    font-family: sans-serif;
+    font-weight: normal;
+}
+
+
+/* Utility classes */
+
+.h100 { height: 100%; }
+
+.h75 { height: 75%; }
+
+.h50 { height: 50%; }
+
+.h25 { height: 36%; }
+
+.w100 { width: 100%; }
+
+.w75 { width: 75%; }
+
+.w50 { width: 50%; }
+
+.w25 { width: 25%; }
+
+html, body {
+    height:100%;
+    width:100%;
+    margin:0;
+    padding:0;
+}
