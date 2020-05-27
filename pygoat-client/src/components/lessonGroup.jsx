@@ -24,7 +24,7 @@ const LessonGroup = (props) => {
         <React.Fragment>
             <div style={groupStyle} className='lesson-group' onClick={clickHandler}>
                 <h1>
-                    Lesson Group
+                    {props.title}
                 </h1>
 
                 <div style={arrowStyle}>

@@ -18,7 +18,7 @@ const LessonItem = (props) => {
 
     return (
         <div className={classNameIs} style={lessonStyle} id='lesson-item-title'>
-            <h2 style={titleStyle} className={currentLesson}>hello world</h2>
+            <h2 style={titleStyle} className={currentLesson}>{props.title}</h2>
         </div>
     )
 }

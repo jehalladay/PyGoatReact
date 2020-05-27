@@ -50,6 +50,8 @@ class Model{
         this.refresh = {}
         this.refresh.storeLocally = this.storeLocally.bind(this)
 
+        this.store = {}
+
         return this;
     };
 

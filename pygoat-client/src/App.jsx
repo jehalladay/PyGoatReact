@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {SVGLogo} from './components/logo.jsx'
 import {GoatHeader} from './components/header.jsx'
 import {SiteNavigator} from './components/siteNav.jsx'
 import {SiteNavItem} from './components/siteNavItem.jsx'
 import {LessonNavigator} from './components/lessonNavigator.jsx'
-import {LessonGroup} from './components/lessonGroup.jsx';
-
 import {LessonArea} from './components/lessonArea.jsx'
+import {LessonNavToggleButton} from './components/sideBarToggle.jsx'
+import {PageNumButton} from './components/pageNumNav.jsx'
+import {ResetLessonButton} from './components/resetLesson.jsx'
+
 
 function App(props) {
 
 	const model = props.model
+
+	const [state, setNewState] = useState()
 	
 	const format = {}
 	format.header = {
@@ -23,16 +27,27 @@ function App(props) {
 		width: '300px'
 	}
 
+	const sidePanelStyle = { 
+		width: format.sidebar.width
+	}
+
+	const sidePanelClass = model.store.hideSideBar? 'lesson-navigator hide': 'lesson-navigator';
+
+	const numPages = Array(4).fill(0)
+	const currentPage = 1
+
 	const navItems = ['Logout', 'Record', 'Contact Us', 'About']
 
 	const navItemsLength = navItems.length
 
 	const lessonNavItems = [
-		{group: 'Lesson Group', lessons: [{title: 'Lesson Title', current: false}, {title: 'Lesson Title', current: false}, {title: 'Lesson Title', current: false},]},
-		{group: 'Lesson Group', lessons: [{title: 'Lesson Title', current: false}, {title: 'Lesson Title', current: false}, {title: 'Lesson Title', current: false},]},
-		{group: 'Lesson Group', lessons: [{title: 'Lesson Title', current: true}, {title: 'Lesson Title', current: false}, {title: 'Lesson Title', current: false},]},
-		{group: 'Lesson Group', lessons: [{title: 'Lesson Title', current: false}, {title: 'Lesson Title', current: false}, {title: 'Lesson Title', current: false},]},
+		{group: 'Lesson Group 1', lessons: [{title: 'Lesson Title 1', current: false}, {title: 'Lesson Title 2', current: false}, {title: 'Lesson Title 3', current: false},]},
+		{group: 'Lesson Group 2', lessons: [{title: 'Lesson Title 1', current: false}, {title: 'Lesson Title 2', current: false}, {title: 'Lesson Title 3', current: false},]},
+		{group: 'Lesson Group 3', lessons: [{title: 'Lesson Title 1', current: true}, {title: 'Lesson Title 2', current: false}, {title: 'Lesson Title 3', current: false},]},
+		{group: 'Lesson Group 4', lessons: [{title: 'Lesson Title 1', current: false}, {title: 'Lesson Title 2', current: false}, {title: 'Lesson Title 3', current: false},]},
 	]
+
+	console.log('app reloaded')
 	return (
 		<div >
 			{/* This is the Header */}
@@ -45,14 +60,18 @@ function App(props) {
 
 			<main>
 				{/* This is the Side Panel */}
-				<div className='lesson-navigator' style={{width: format.sidebar.width}}>
+				<div className={sidePanelClass} style={sidePanelStyle}>
 					<LessonNavigator width={format.sidebar.width} groups={lessonNavItems} />
 				</div>
 
 
 				{/* This is Page Contents */}
 				<div className='lesson-area'>
-					<LessonArea />
+					<LessonArea>
+						<LessonNavToggleButton setToggle={setNewState} store={model.store} />
+						{numPages.map((x, i) => <PageNumButton num={i+1} active={(i+1) === currentPage}/>)}
+						<ResetLessonButton />
+					</LessonArea>
 				</div>
 			</main>
 		</div>

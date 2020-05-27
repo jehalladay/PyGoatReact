@@ -104,16 +104,13 @@ main {
 
 .lesson-item {
     transition: all 0.2s;
-    transition-property: all;
-    transition-duration: 0.2s;
-    transition-timing-function: ease;
-    transition-delay: 0s;
     height: 50px;
     /* display: flex;
     align-items: 'center'; */
     width: 100%;
     font-size: 16pt;
     color: white;
+    background-color: #222222;
 }
 
 .current-lesson {
@@ -137,7 +134,7 @@ main {
     padding: 50px
 }
 
-.lesson-area div {
+#inner-lesson-area {
     background-color: #eeeeee;
     height: 100%;
 }
